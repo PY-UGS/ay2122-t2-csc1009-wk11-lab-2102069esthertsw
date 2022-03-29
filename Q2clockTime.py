@@ -26,43 +26,48 @@ class clockTime:
         self.showTime()
     
     def showTime(self):
-        print(self.hours, ":", self.minutes,":", self.seconds)
+        print("Time is " , self.hours, ":", self.minutes,":", self.seconds)
 
 myClock = clockTime()
 while(1):
     choice = int(input("Select an option: \n1 - Set hours\n2 - Set minutes\n3 - Set seconds\n4 - Set time\n5 - Show time\n6 - Exit\n"))
+#     intialise variables to pass the while loop conditions below until user enter a valid input
     hours = -1
     minutes = -1
     seconds = -1
+#     python switch case equivalent
     match choice:
         case 1:
             while(hours<0 or hours>23):
                 hours = int(input("Enter hours value: "))
             myClock.setHours(hours)
-            hours = -1
+            hours = -1 #prepare to pass while loop conditions again if user chooses to set hour again
         case 2:
             while(minutes<0 or minutes>59):
                 minutes = int(input("Enter minutes value: "))
             myClock.setMinutes(minutes)
-            minutes = -1
+            minutes = -1 #prepare to pass while loop conditions again if user chooses to set minutes again
         case 3:
             while(seconds<0 or seconds>59):
                 seconds = int(input("Enter seconds value: "))
             myClock.setSeconds(seconds)
-            seconds = -1
+            seconds = -1 #prepare to pass while loop conditions again if user chooses to set seconds again
         case 4:
             while(hours<0 or hours>23):
                 hours = int(input("Enter hours value: "))
             while(minutes<0 or minutes>59):
                 minutes = int(input("Enter minutes value: "))
             while(seconds<0 or seconds>59):
-                int(input("Enter seconds value: "))
-            myClock.setTimes(hours, minutes, seconds)
+                seconds = int(input("Enter seconds value: "))
+            myClock.setTime(hours, minutes, seconds)
+            
+            #prepare to pass while loop conditions again if user chooses to set time again
             hours = -1
             minutes = -1
             seconds = -1
+            
         case 5:
             myClock.showTime()
-        case _:
+        case _: #default - if user enters an invalid input
             print("Exiting")
             break
